@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gilla Studios - Photography & Video Production</title>
+<style>
+  /* Reset and basic styling */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #000;
+    color: #ddd;
+    line-height: 1.6;
+  }
+  a {
+    color: #1e90ff; /* DodgerBlue */
+    text-decoration: none;
+  }
+  a:hover, a:focus {
+    text-decoration: underline;
+  }
+  header {
+    text-align: center;
+    padding: 4rem 1rem 2rem;
+    background: linear-gradient(135deg, #000, #111a2b);
+  }
+  header h1 {
+    font-size: 3.5rem;
+    margin: 0;
+    letter-spacing: 0.1em;
+    font-weight: 900;
+    color: #1e90ff;
+  }
+  header p {
+    font-size: 1.25rem;
+    margin-top: 0.4rem;
+    font-style: italic;
+    color: #8db9ff;
+  }
+  section {
+    max-width: 1000px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+  }
+  h2.section-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #1e90ff;
+    display: inline-block;
+    padding-bottom: 0.3rem;
+    letter-spacing: 0.05em;
+    color: #1e90ff;
+  }
+  /* About section */
+  #about p {
+    max-width: 700px;
+    margin: auto;
+    font-size: 1.1rem;
+    color: #bbb;
+  }
+  /* Portfolio gallery */
+  #portfolio {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 1.5rem;
+  }
+  #portfolio figure {
+    margin: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 0 8px #111a2b;
+    cursor: pointer;
+    background-color: #111a2b;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  #portfolio figure:hover,
+  #portfolio figure:focus-within {
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px #1e90ffcc;
+    outline: none;
+  }
+  #portfolio img {
+    width: 100%;
+    display: block;
+    height: 200px;
+    object-fit: cover;
+  }
+  #portfolio figcaption {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    background-color: #111a2b;
+    color: #ddd;
+    text-align: center;
+  }
+  /* Services section */
+  #services ul {
+    list-style: none;
+    padding: 0;
+    max-width: 700px;
+    margin: auto;
+  }
+  #services li {
+    background: #111a2b;
+    border-left: 5px solid #1e90ff;
+    margin-bottom: 1rem;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    border-radius: 6px;
+    color: #ccc;
+  }
+  /* Testimonials */
+  #testimonials {
+    max-width: 700px;
+    margin: auto;
+    color: #bbb;
+  }
+  blockquote {
+    background: #111a2b;
+    border-left: 5px solid #1e90ff;
+    margin: 1.5rem 0;
+    padding: 1rem 1.5rem;
+    font-style: italic;
+    border-radius: 6px;
+  }
+  blockquote footer {
+    margin-top: 0.5rem;
+    color: #1e90ff;
+    font-weight: 600;
+  }
+  /* Contact form */
+  #contact .phone-contact,
+  #contact .email-contact,
+  #contact .address-contact {
+    max-width: 600px;
+    margin: 0.6rem auto 0.6rem;
+    font-size: 1.1rem;
+    color: #ddd;
+    text-align: center;
+  }
+  #contact .phone-contact a,
+  #contact .email-contact a,
+  #contact .address-contact a {
+    color: #1e90ff;
+    font-weight: 700;
+  }
+  #contact form {
+    max-width: 600px;
+    margin: 1rem auto 2rem;
+    background-color: #111a2b;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 12px #111a2b;
+  }
+  #contact label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+    color: #1e90ff;
+  }
+  #contact input[type="text"],
+  #contact input[type="email"],
+  #contact textarea {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1.2rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #222a44;
+    color: #ddd;
+    font-size: 1rem;
+    resize: vertical;
+    transition: background-color 0.3s ease;
+  }
+  #contact input[type="text"]:focus,
+  #contact input[type="email"]:focus,
+  #contact textarea:focus {
+    background-color: #33487d;
+    outline: none;
+  }
+  #contact button {
+    background-color: #1e90ff;
+    color: #000;
+    padding: 0.75rem 1.75rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+  }
+  #contact button:hover,
+  #contact button:focus {
+    background-color: #1248b7;
+  }
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    background: #111a2b;
+    color: #666;
+    font-size: 0.9rem;
+  }
+  footer a {
+    color: #1e90ff;
+    text-decoration: none;
+  }
+  footer a:hover, footer a:focus {
+    text-decoration: underline;
+  }
+  /* Social links */
+  .social-links {
+    margin-top: 0.8rem;
+  }
+  .social-links a {
+    font-size: 1.8rem;
+    margin: 0 0.7rem;
+    color: #1e90ff;
+    transition: color 0.3s ease;
+    display: inline-block;
+  }
+  .social-links a:hover, .social-links a:focus {
+    color: #1248b7;
+  }
+  /* Social Icons with simple SVG */
+  .icon-facebook svg, .icon-instagram svg, .icon-tiktok svg {
+    vertical-align: middle;
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+  }
+  /* Responsive adjustments */
+  @media(max-width: 480px) {
+    header h1 {
+      font-size: 2.2rem;
+    }
+    header p {
+      font-size: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Gilla Studios</h1>
+  <p>Capturing moments, Creating memories</p>
+  <div class="social-links" aria-label="Social media links">
+    <a class="icon-facebook" href="https://facebook.com/GillaPatrick" target="_blank" rel="noopener" aria-label="Facebook - Gilla Patrick" title="Facebook - Gilla Patrick">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.675 0h-21.35C.601 0 0 .6 0 1.337v21.326C0 23.4.601 24 1.325 24H12v-9.294H9.294v-3.622H12V8.413c0-2.675 1.63-4.132 4.012-4.132 1.143 0 2.352.206 2.352.206v2.582h-1.323c-1.305 0-1.71.808-1.71 1.64v1.963h2.913l-.466 3.622H15.33V24h7.344c.723 0 1.326-.6 1.326-1.337V1.337c0-.737-.603-1.337-1.325-1.337z"/></svg>
+    </a>
+    <a class="icon-instagram" href="https://instagram.com/Gilla_patrique" target="_blank" rel="noopener" aria-label="Instagram - Gilla_patrique" title="Instagram - Gilla_patrique">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zM12 7.25a4.75 4.75 0 100 9.5 4.75 4.75 0 000-9.5zm0 7.75a3 3 0 110-6 3 3 0 010 6zm4.88-8.56a1.13 1.13 0 11-2.25 0 1.13 1.13 0 012.25 0z"/></svg>
+    </a>
+    <a class="icon-tiktok" href="https://tiktok.com/@GIRAMAHOROpatrick" target="_blank" rel="noopener" aria-label="TikTok - GIRAMAHORO patrick" title="TikTok - GIRAMAHORO patrick">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.168 3.4v9.057a3.843 3.843 0 01-2.452-1.168 3.865 3.865 0 01-1.168-2.646c0-.277.023-.546.07-.808a.75.75 0 00-1.467-.277 5.42 5.42 0 00-.091 1.086 5.325 5.325 0 001.611 4.112 5.296 5.296 0 003.754 1.516 5.187 5.187 0 003.68-1.544 5.23 5.23 0 001.517-3.717V3.748a.75.75 0 00-.849-.732 5.94 5.94 0 01-4.022-1.19z"/></svg>
+    </a>
+  </div>
+</header>
+
+<main>
+  <section id="about" aria-labelledby="about-title">
+    <h2 id="about-title" class="section-title">About the Photographer</h2>
+    <p>
+      Welcome to Gilla Studios! I'm your dedicated photographer passionate about capturing your most precious memories with creativity and professionalism. With years of experience in portrait, event, and landscape photography, I strive to turn moments into timeless stories through my lens.
+    </p>
+  </section>
+
+  <section id="portfolio" aria-labelledby="portfolio-title">
+    <h2 id="portfolio-title" class="section-title">Portfolio</h2>
+    <figure tabindex="0">
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Stunning portrait of a young woman" />
+      <figcaption>Portrait Photography</figcaption>
+    </figure>
+    <figure tabindex="0">
+      <img src="https://images.unsplash.com/photo-1488376739004-7e0d8126f1bb?auto=format&fit=crop&w=800&q=80" alt="A smiling couple on their wedding day" />
+      <figcaption>Wedding Photography</figcaption>
+    </figure>
+    <figure tabindex="0">
+      <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80" alt="A scenic mountain landscape under the blue sky" />
+      <figcaption>Landscape Photography</figcaption>
+    </figure>
+    <figure tabindex="0">
+      <img src="https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=800&q=80" alt="Close-up focus on a camera lens" />
+      <figcaption>Studio Work</figcaption>
+    </figure>
+  </section>
+
+  <section id="services" aria-labelledby="services-title">
+    <h2 id="services-title" class="section-title">Services</h2>
+    <ul>
+      <li>Video Production</li>
+      <li>Photographer Services</li>
+      <li>Photo Editing</li>
+    </ul>
+  </section>
+
+  <section id="testimonials" aria-labelledby="testimonials-title">
+    <h2 id="testimonials-title" class="section-title">Client Testimonials</h2>
+    <blockquote>
+      <p>"Gilla Studios made our wedding day unforgettable with their stunning photography and professionalism. Highly recommend!"</p>
+      <footer>- Anna &amp; Mark</footer>
+    </blockquote>
+    <blockquote>
+      <p>"The portraits were incredible - so natural and crisp. Friendly and patient throughout the session."</p>
+      <footer>- Jamie L.</footer>
+    </blockquote>
+  </section>
+
+  <section id="contact" aria-labelledby="contact-title">
+    <h2 id="contact-title" class="section-title">Contact</h2>
+    <div class="phone-contact">Phone: <a href="tel:+250790207303" aria-label="Call phone number +250 790 207 303">+250 790 207 303</a></div>
+    <div class="email-contact">Email: <a href="mailto:giramahoropatrick3@gmail.com" aria-label="Email giramahoropatrick3 at gmail dot com">giramahoropatrick3@gmail.com</a></div>
+    <div class="address-contact">Address: Bugesera district in <strong>RWANDA</strong></div>
+    <form id="contact-form" novalidate>
+      <label for="name">Name *</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required aria-required="true" />
+
+      <label for="email">Email *</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required aria-required="true" />
+
+      <label for="message">Message *</label>
+      <textarea id="message" name="message" rows="5" placeholder="Your message here" required aria-required="true"></textarea>
+
+      <button type="submit" aria-label="Send message">Send Message</button>
+      <p id="form-message" role="alert" aria-live="assertive" style="color:#1e90ff; margin-top:1rem;"></p>
+    </form>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Gilla Studios. All rights reserved. | Phone: <a href="tel:+250790207303">+250 790 207 303</a> | Email: <a href="mailto:giramahoropatrick3@gmail.com">giramahoropatrick3@gmail.com</a>
+</footer>
+
+<script>
+  // Simple client-side form validation and submission simulation
+  const form = document.getElementById('contact-form');
+  const formMessage = document.getElementById('form-message');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    formMessage.textContent = '';
+
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+
+    if (!name || !email || !message) {
+      formMessage.textContent = 'Please fill in all required fields.';
+      formMessage.style.color = '#ff6347';
+      return;
+    }
+    // Basic email pattern check
+    const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+    if (!emailPattern.test(email)) {
+      formMessage.textContent = 'Please enter a valid email address.';
+      formMessage.style.color = '#ff6347';
+      return;
+    }
+
+    formMessage.style.color = '#4CAF50';
+    formMessage.textContent = 'Thank you for your message! I will get back to you soon.';
+    form.reset();
+  });
+</script>
+</body>
+</html>
+
