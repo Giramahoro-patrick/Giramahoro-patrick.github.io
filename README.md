@@ -1,2 +1,2 @@
-# Girama
+# Gilla studios
 Gilla
